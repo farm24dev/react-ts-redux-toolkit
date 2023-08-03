@@ -6,7 +6,14 @@ import {
   signOut,
 } from "firebase/auth";
 import { firebaseApp } from "../configs/firebase";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { AccountType } from "../app-types/account.type";
 const auth = getAuth(firebaseApp);
 
 const db = getFirestore(firebaseApp);
@@ -63,10 +70,21 @@ export async function getCurrentAccount<AccountType>(userId: string) {
   }
 
   let accTep = docSnap.data() as AccountType;
-  
+
   let acc = {
     userId,
     ...accTep,
   };
   return acc;
+}
+
+//update Accoubt
+export async function updateAccount(
+  userId: string,
+  acc: AccountType
+): Promise<void> {
+  await updateDoc(doc(db, "users", userId), {
+    firstName: acc.firstName,
+    lastName: acc.lastName,
+  });
 }

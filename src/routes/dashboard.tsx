@@ -4,6 +4,7 @@ import DashboardLeave from "../pages/dashboard/dashboard-leave";
 import DashboardMangeLeave from "../pages/dashboard/dashboard-manage-leave";
 import DashboardLayout from "../pages/dashboard/dashboard-layout";
 import PermisstionDenied from "../pages/dashboard/permisstion-denied";
+import DashboardEditProfilePage from "../pages/dashboard/dashboard-edit-profile";
 
 const routeDashboard: RouteObject[] = [
   {
@@ -25,6 +26,10 @@ const routeDashboard: RouteObject[] = [
       {
         path: "permisstion-denied",
         element: <PermisstionDenied />,
+      },
+      {
+        path: "edit-profile",
+        element: <DashboardEditProfilePage />,
       },
     ],
   },
